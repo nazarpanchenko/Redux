@@ -30,13 +30,24 @@ store.subscribe(() => {
         const sum = acc + value;
 
         if (value > 0) {
-            stringNums.push('+' + sum) 
-        } else if (value <= 0) {
-            stringNums.push(sum);
+            stringNums.push('+' + sum);
+        }
+        else if (value < 0) {
+            stringNums.push('' + sum);
         }
         
         return sum;
     }, 0);
+
+    for (let i = 0; i < stringNums.length - 1; i++) {
+        let current = stringNums[i],
+            next = stringNums[i + 1],
+            prev = stringNums[i - 1];
+
+        if (current.charAt(0) === '-' && next.charAt(0) === '+') {
+            stringNums[i + 1] = '' + stringNums[i + 1].substring(1);
+        }
+    }
     
     const historyString = stringNums.join('');
 
