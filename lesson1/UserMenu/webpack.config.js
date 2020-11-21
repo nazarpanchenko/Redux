@@ -42,11 +42,11 @@ module.exports = (env, argv) => {
         },
         devServer: {
             hot: true,
-            port: 9007,
+            port: 8080,
             historyApiFallback: true
         },
         output : {
-            path : path.resolve(__dirname, 'review_build')
+            path : path.resolve(__dirname, 'build')
         }
     };
 
