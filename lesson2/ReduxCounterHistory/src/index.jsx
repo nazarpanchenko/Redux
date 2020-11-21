@@ -20,9 +20,9 @@ const onReset = () => {
 
 incrementBtn.addEventListener('click', onIncrement);
 decrementBtn.addEventListener('click', onDecrement);
-resetBtn.addEventListener('click', reset);
+resetBtn.addEventListener('click', onReset);
 
-store.subscribe = (() => {
+store.subscribe(() => {
     const state = store.getState();
     const currentValue = state.history.reduce((acc, value) => acc + value, 0);
     const historyString = state.history.join('');

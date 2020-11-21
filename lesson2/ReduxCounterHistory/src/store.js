@@ -16,7 +16,6 @@ export const decrement = () => {
     };
 };
 
-
 export const reset = () => {
     return {
         type: RESET
