@@ -24,8 +24,23 @@ resetBtn.addEventListener('click', onReset);
 
 store.subscribe(() => {
     const state = store.getState();
-    const currentValue = state.history.reduce((acc, value) => acc + value, 0);
-    const historyString = state.history.join('');
+    const stringNums = [];
+
+    const currentValue = state.history.reduce((acc, value) => {
+        const sum = acc + value;
+
+        if (value > 0) {
+            stringNums.push('+' + sum) 
+        } else if (value < 0) {
+            stringNums.push('-' + sum);
+        } else if (value === 0) {
+            stringNums.push(sum);
+        }
+        
+        return sum;
+    }, 0);
+    
+    const historyString = stringNums.join('');
 
     resultElem.textContent = 
         state.history.length === 0 ? '' : `${historyString} = ${currentValue}`;
