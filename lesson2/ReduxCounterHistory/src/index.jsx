@@ -31,9 +31,7 @@ store.subscribe(() => {
 
         if (value > 0) {
             stringNums.push('+' + sum) 
-        } else if (value < 0) {
-            stringNums.push('-' + sum);
-        } else if (value === 0) {
+        } else if (value <= 0) {
             stringNums.push(sum);
         }
         
