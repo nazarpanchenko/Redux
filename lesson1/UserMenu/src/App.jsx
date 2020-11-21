@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.scss';
-import UserMenu from './UserMenu';
+import Header from './Header';
 import { UserContext } from './user-context';
 
 class App extends React.Component {
@@ -13,7 +13,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div class="page">
+            <div className="page">
                 <UserContext.Provider value={this.state.userData}>                  
                     <Header />
                 </UserContext.Provider>
