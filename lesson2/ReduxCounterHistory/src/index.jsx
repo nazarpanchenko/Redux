@@ -24,32 +24,32 @@ resetBtn.addEventListener('click', onReset);
 
 store.subscribe(() => {
     const state = store.getState();
-    const stringNums = [];
+    let historyString = [];
 
-    const currentValue = state.history.reduce((acc, value) => {
-        const sum = acc + value;
+    let currentValue = state.history.reduce((acc, value) => {
+        if (typeof acc === 'string' && acc.charAt(0) === '+') {
+            acc = acc.substring(1);
+        }
 
-        if (value > 0) {
-            stringNums.push('+' + sum);
-        }
-        else if (value < 0) {
-            stringNums.push('' + sum);
-        }
-        
-        return sum;
+        const sum = Number(acc) + Number(value);
+
+        historyString.push(
+            sum > 0 ? '+' + sum 
+            : sum < 0 ? '' + sum : 
+            '' + sum
+        );
+
+        return sum > 0 ? '+' + sum 
+            : sum < 0 ? '' + sum : 
+            '' + sum;
     }, 0);
 
-    for (let i = 0; i < stringNums.length - 1; i++) {
-        let current = stringNums[i],
-            next = stringNums[i + 1],
-            prev = stringNums[i - 1];
+    currentValue =
+        currentValue === '+0' ? currentValue.substring(1) : currentValue;
 
-        if (current.charAt(0) === '-' && next.charAt(0) === '+') {
-            stringNums[i + 1] = '' + stringNums[i + 1].substring(1);
-        }
-    }
-    
-    const historyString = stringNums.join('');
+    historyString = historyString.join('');
+
+    // const historyString = state.history.join('');
 
     resultElem.textContent = 
         state.history.length === 0 ? '' : `${historyString} = ${currentValue}`;
