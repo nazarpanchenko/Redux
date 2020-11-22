@@ -1,10 +1,8 @@
-import { ADD, DELETE } from './users.actions';
-
-export const userReducer = (state = { usersList: [] }, action) => {
+const userReducer = (state = { usersList: [] }, action) => {
     switch(action.type) {
-        case ADD:
+        case 'ADD':
             return state.usersList.concat({});
-        case DELETE:
+        case 'DELETE':
             return state.usersList.splice(1, 1);
         default :
             return state.usersList;
