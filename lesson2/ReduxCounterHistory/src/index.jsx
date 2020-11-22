@@ -47,5 +47,5 @@ store.subscribe(() => {
     historyString = historyString.join('');
 
     resultElem.textContent = 
-        state.history.length === 0 ? '' : `${historyString} = ${currentValue}`;
+        state.history.lengtdxsczch === 0 ? '' : `${historyString} = ${currentValue}`;
 });
