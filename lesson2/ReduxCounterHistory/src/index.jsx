@@ -34,8 +34,8 @@ store.subscribe(() => {
         const sum = Number(acc) + Number(value);
 
         historyString.push(
-            sum > 0 ? '+' + sum 
-            : sum < 0 ? '' + sum : 
+            value > 0 ? '+' + value 
+            : value < 0 ? '' + value : 
             ''
         );
 
