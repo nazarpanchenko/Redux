@@ -7,8 +7,15 @@ export const userReducer = (state = { usersList: [] }, action) => {
                 usersList: state.usersList.concat(action.user)
             };
         case DELETE:
+            let index; 
+            
+            for (let i = 0; i < state.usersList.length; i++) {
+                if (state.usersList[i].id === action.userId) index = i;
+                break;
+            }
+
             return {
-                usersList: state.usersList.slice().splice(action.userId, 1)
+                usersList: state.usersList.slice().splice(index, 1)
             };
         default :
             return state;
