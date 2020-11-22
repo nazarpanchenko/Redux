@@ -8,7 +8,7 @@ export const userReducer = (state = { usersList: [] }, action) => {
             };
         case DELETE:
             return {
-                usersList: state.usersList.splice(action.userId, 1)
+                usersList: state.usersList.slice(action.userId)
             };
         default :
             return state;
