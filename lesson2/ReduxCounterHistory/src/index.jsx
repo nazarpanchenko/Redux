@@ -33,10 +33,10 @@ store.subscribe(() => {
 
         const sum = Number(acc) + Number(value);
 
-        historyString.push('' + value);
+        historyString.push(value > 0 ? '' + '+1' : value < 0 ? '-1' : '');
 
         return sum > 0 ? '+' + sum 
-            : sum < 0 ? '' + sum : 
+            : sum < 0 ? '' + sum :
             '' + sum;
     }, 0);
 
