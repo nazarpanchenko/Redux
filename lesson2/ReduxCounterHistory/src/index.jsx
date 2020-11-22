@@ -36,7 +36,7 @@ store.subscribe(() => {
         historyString.push(
             sum > 0 ? '+' + sum 
             : sum < 0 ? '' + sum : 
-            '' + sum
+            ''
         );
 
         return sum > 0 ? '+' + sum 
