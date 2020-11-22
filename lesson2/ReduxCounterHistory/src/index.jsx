@@ -27,17 +27,9 @@ store.subscribe(() => {
     let historyString = [];
 
     let currentValue = state.history.reduce((acc, value) => {
-        if (typeof acc === 'string' && acc.charAt(0) === '+') {
-            acc = acc.substring(1);
-        }
-
-        const sum = Number(acc) + Number(value);
-
         historyString.push(value > 0 ? '' + '+1' : value < 0 ? '-1' : '');
 
-        return sum > 0 ? '+' + sum 
-            : sum < 0 ? '' + sum :
-            '' + sum;
+        return acc + value;
     }, 0);
 
     historyString = historyString.join('');
