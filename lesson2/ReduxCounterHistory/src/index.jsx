@@ -34,8 +34,8 @@ store.subscribe(() => {
         const sum = Number(acc) + Number(value);
 
         historyString.push(
-            Number(value) > 0 ? '+' + value
-            : Number(value) < 0 ? '' + value : 
+            value > 0 ? '+' + value
+            : value < 0 ? '' + value : 
             ''
         );
 
@@ -43,9 +43,6 @@ store.subscribe(() => {
             : sum < 0 ? '' + sum : 
             '' + sum;
     }, 0);
-
-    currentValue =
-        currentValue === '+0' ? currentValue.substring(1) : currentValue;
 
     historyString = historyString.join('');
 
