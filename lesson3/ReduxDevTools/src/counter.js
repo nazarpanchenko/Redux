@@ -1,25 +1,22 @@
 import { createStore } from "redux";
 
-const INCREMENT = 'COUNTER/INCREMENT';
-const DECREMENT = 'COUNTER/DECREMENT';
-
 const increment = () => {
     return {
-        type: INCREMENT
+        type: 'COUNTER/INCREMENT'
     };
 };
 
 const decrement = () => {
     return {
-        type: DECREMENT
+        type: 'COUNTER/DECREMENT'
     };
 };
 
 const counterReducer = (state = 0, action) => {
     switch (action.type) {
-        case INCREMENT:
+        case increment:
             return state + 1;
-        case DECREMENT:
+        case decrement:
             return state - 1;
         default:
             return state;
