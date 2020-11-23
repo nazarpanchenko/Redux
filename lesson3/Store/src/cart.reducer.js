@@ -1,10 +1,5 @@
 import { ADD_CART, DELETE_CART } from './cart.actions';
 
-// const initialState = {
-//     cart: {
-//         products: []
-//     }
-// };
 const initialValue = {
     cart: {
         products: []

@@ -1,22 +1,12 @@
 import { ADD_USER, DELETE_USER } from './user.actions';
 
-// const initialState = {
-//     user: null
-// };
-
 const cartReducer = (state = null, action) => {
     switch (action.type) {
         case ADD_USER:
-            return {
-                ...state,
-                user: action.payload.user
-            };
+            return action.payload.user
 
         case DELETE_USER:
-            return {
-                ...state,
-                user: null
-            };
+            return null;
 
         default:
             return state;
