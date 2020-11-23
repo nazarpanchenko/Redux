@@ -24,14 +24,17 @@ const cartReducer = (state = initialState, action) => {
                         ...state,
                         cart : {
                             ...state.cart,
-                            products: action.payload.product
+                            products: [
+                                action.payload.product
+                            ]
+
                         }
                     };
                 }
 
                 return product;
             });
-            
+
             return {
                 ...state,
                 cart: {
