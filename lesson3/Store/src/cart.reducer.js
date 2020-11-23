@@ -1,11 +1,9 @@
 import { ADD_CART, DELETE_CART } from './cart.actions';
 
 const initialState = {
-    language: 'en',
     cart: {
         products: []
-    },
-    user: null
+    }
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -34,7 +32,9 @@ const cartReducer = (state = initialState, action) => {
             });
             return {
                 ...state,
-                cart: updatedProducts
+                cart: {
+                    products: updatedProducts
+                }
             };
         default:
             return state;

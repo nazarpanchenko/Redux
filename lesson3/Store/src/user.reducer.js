@@ -1,10 +1,6 @@
 import { ADD_USER, DELETE_USER } from './user.actions';
 
 const initialState = {
-    language: 'en',
-    cart: {
-        products: []
-    },
     user: null
 };
 
