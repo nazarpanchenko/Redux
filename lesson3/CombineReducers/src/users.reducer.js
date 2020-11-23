@@ -22,7 +22,7 @@ export const usersReducer = (state = initialState, action) => {
             };
 
             case UPDATE_USER:
-                const newList = state.usersList.map(user => {
+                const updatedList = state.usersList.map(user => {
                     if (user.id === action.payload.userId) {
                         return {
                             ...user,
@@ -34,7 +34,7 @@ export const usersReducer = (state = initialState, action) => {
                 });
                 return {
                     ...state,
-                    usersList: newList
+                    usersList: updatedList
                 };
 
         default:
