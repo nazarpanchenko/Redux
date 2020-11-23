@@ -18,19 +18,12 @@ const cartReducer = (state = initialValue, action) => {
             return shopItems.cart;
 
         case DELETE_CART:
-            const updatedProducts = state.products.map(product => {
-                if (product.id !== action.payload.productId) {
-                    return {
-                        ...product,
-                        ...action.payload.product
-                    };
-                }
-
-                return product;
-            });
+            const newList = state.products.filter(
+                product => product.id !== action.payload.productId
+            );
             shopItems = {
                 cart : {
-                    products: updatedProducts
+                    products: newList
                 }
             };
 
