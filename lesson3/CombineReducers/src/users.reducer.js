@@ -26,7 +26,7 @@ export const usersReducer = (state = initialState, action) => {
                     if (user.id === action.payload.userId) {
                         return {
                             ...user,
-                            ...action.payload.userId
+                            ...action.payload.userData
                         };
                     }
 
@@ -43,3 +43,4 @@ export const usersReducer = (state = initialState, action) => {
 };
 
 export default usersReducer;
+
