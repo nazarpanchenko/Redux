@@ -1,9 +1,11 @@
 import { ADD_CART, DELETE_CART } from './cart.actions';
 
 const initialState = {
+    language: 'en',
     cart: {
         products: []
-    }
+    },
+    user: null
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -18,7 +20,7 @@ const cartReducer = (state = initialState, action) => {
             };
         case DELETE_CART:
             const updatedProducts = state.cart.products.map(product => {
-                if (product.id === action.payload.productId) {
+                if (product.id !== action.payload.productId) {
                     return {
                         ...state,
                         cart : {
@@ -28,7 +30,7 @@ const cartReducer = (state = initialState, action) => {
                     };
                 }
 
-                return user;
+                return product;
             });
             return {
                 ...state,

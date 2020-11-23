@@ -1,7 +1,11 @@
 import { LANGUAGE } from './language.actions';
 
 const initialState = {
-    language: 'en'
+    language: 'en',
+    cart: {
+        products: []
+    },
+    user: null
 };
 
 const languageReducer = (state = initialState, action) => {
