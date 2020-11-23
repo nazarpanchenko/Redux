@@ -10,7 +10,8 @@ const languageReducer = (state = initialState, action) => {
             return {
                 ...state,
                 language: action.payload.language
-            }
+            };
+
         default:
             return state;
     }

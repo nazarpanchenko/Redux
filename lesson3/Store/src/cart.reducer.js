@@ -16,6 +16,7 @@ const cartReducer = (state = initialState, action) => {
                     products: state.cart.products.concat(action.payload.product)
                 }
             };
+
         case DELETE_CART:
             const updatedProducts = state.cart.products.map(product => {
                 if (product.id !== action.payload.productId) {
@@ -23,19 +24,21 @@ const cartReducer = (state = initialState, action) => {
                         ...state,
                         cart : {
                             ...state.cart,
-                            ...action.payload.product
+                            products: action.payload.product
                         }
                     };
                 }
 
                 return product;
             });
+            
             return {
                 ...state,
                 cart: {
                     products: updatedProducts
                 }
             };
+
         default:
             return state;
     }

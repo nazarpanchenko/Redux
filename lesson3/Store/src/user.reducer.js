@@ -11,11 +11,13 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 user: action.payload.user
             };
+            
         case DELETE_USER:
             return {
                 ...state,
                 user: null
             };
+
         default:
             return state;
     }
