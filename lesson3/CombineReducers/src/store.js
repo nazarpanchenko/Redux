@@ -7,6 +7,6 @@ const appReducer = combineReducers({
     users: usersReducer
 });
 
-const store = createStore(counterReducer);
+const store = createStore(appReducer);
 
 export default store;
