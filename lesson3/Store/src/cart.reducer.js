@@ -15,25 +15,26 @@ const cartReducer = (state = initialValue, action) => {
                 }
             };
             
-            return { ...shopItems };
+            return shopItems.cart;
 
-        // case DELETE_CART:
-        //     const updatedProducts = state.products.map(product => {
-        //         if (product.id !== action.payload.productId) {
-        //             return {
-        //                 products: state.products.concat(action.payload.product)
-        //             };
-        //         }
+        case DELETE_CART:
+            const updatedProducts = state.products.map(product => {
+                if (product.id !== action.payload.productId) {
+                    return {
+                        ...product,
+                        ...action.payload.product
+                    };
+                }
 
-        //         return product;
-        //     });
-        //     shopItems = {
-        //         cart : {
-        //             products: updatedProducts
-        //         }
-        //     };
+                return product;
+            });
+            shopItems = {
+                cart : {
+                    products: updatedProducts
+                }
+            };
 
-        //     return { ...shopItems };
+            return shopItems.cart;
 
         default:
             return state;
