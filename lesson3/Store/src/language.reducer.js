@@ -7,7 +7,10 @@ const initialValue = {
 const languageReducer = (state = initialValue, action) => {
     switch (action.type) {
         case LANGUAGE:
-            return action.payload.language;
+            return {
+                ...state,
+                language: action.payload.language
+            };
 
         default:
             return state;
