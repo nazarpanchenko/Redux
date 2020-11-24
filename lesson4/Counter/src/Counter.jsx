@@ -27,7 +27,7 @@ const Counter = ({ counter, increment, decrement, reset }) => {
 const mapDispatch = {
     increment: counterActions.increment,
     decrement: counterActions.decrement,
-    reset: counterActions.dispatch
+    reset: counterActions.reset
 };
 
 const mapState = state => {
