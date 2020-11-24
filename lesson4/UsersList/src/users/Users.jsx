@@ -24,7 +24,7 @@ class Users extends React.Component {
                     Create user
                 </button>
                 <ul className="users__list">
-                    {users.map(user => {
+                    {users.map(user => (
                          <li key={user.id} className="users__list-item">
                             <span>{user.name}</span>
                             <button 
@@ -34,7 +34,7 @@ class Users extends React.Component {
                                 +
                             </button>
                         </li>
-                    })}
+                    ))}
                 </ul>
             </div>
         );
@@ -43,17 +43,17 @@ class Users extends React.Component {
 
 const mapState = state => {
     return {
-        users: state.users.usersList
+        users: state.usersList
     };
 };
 
 const mapDispatch = {
-    createUser: userActions.ADD_USER,
-    deleteUser: userActions.DELETE_USER
+    createUser: userActions.addUser,
+    deleteUser: userActions.deleteUser
 };
 
 const connector = connect(mapState, mapDispatch);
 
 const ConnectedUsers = connector(Users);
 
-export default ConnectedUsers(Users);
+export default ConnectedUsers;
