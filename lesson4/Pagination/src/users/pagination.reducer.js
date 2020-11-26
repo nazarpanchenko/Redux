@@ -1,6 +1,6 @@
 import { NEXT, PREV } from './pagination.actions';
 
-const users = [
+export const users = [
     {
         id: 'id-0',
         age: 21,
@@ -65,15 +65,15 @@ const initialState = {
     }
 };
 
-export const paginationReducer = (state = initialState, action) => {
-    let currentPos = 0,
-        shift = 0,
-        nextPos = 0,
-        prevPos = 0;
+let currentPos = 0,
+    prevPos = 0,
+    nextPos = 0,
+    shift = 0;
 
+export const paginationReducer = (state = initialState, action) => {
     switch(action.type) {
         case NEXT:
-            currentPos += action.payload.itemsPerPage;
+            currentPos = nextPos;
             nextPos = currentPos + action.payload.itemsPerPage;
             shift = action.payload.itemsPerPage;
 
@@ -86,8 +86,7 @@ export const paginationReducer = (state = initialState, action) => {
             };
 
         case PREV:
-            currentPos -= action.payload.itemsPerPage;
-            prevPos = nextPos - action.payload.itemsPerPage;
+            prevPos = currentPos - action.payload.itemsPerPage;
             shift = action.payload.itemsPerPage;
 
             return {

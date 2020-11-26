@@ -3,6 +3,7 @@ import Pagination from './Pagination';
 import User from './User';
 import { connect } from 'react-redux';
 import * as paginationAction from './pagination.actions';
+import * as Users from './pagination.reducer';
 
 class UsersList extends Component {
     render() {
@@ -14,7 +15,7 @@ class UsersList extends Component {
                     goPrev={goPrev}
                     goNext={goNext}
                     currentPage={currentPage}
-                    totalItems={users.length} 
+                    totalItems={Users.users.length} 
                     itemsPerPage={3}
                 />
                 {users.map(user => (
