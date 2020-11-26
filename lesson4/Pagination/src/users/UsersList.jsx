@@ -21,7 +21,7 @@ class UsersList extends Component {
                 {users.map(user => (
                     <User 
                         key={user.id} 
-                        name={user.name} 
+                        name={user.name}
                         age={user.age} 
                     />
                 ))}
