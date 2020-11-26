@@ -87,8 +87,8 @@ export const paginationReducer = (state = initialState, action) => {
 
         case PREV:
             prevPos = nextPos - action.payload.itemsPerPage;
-            shift = action.payload.itemsPerPage
-            nextPos -= 3;
+            shift = action.payload.itemsPerPage;
+            nextPos -= action.payload.itemsPerPage;
 
             return {
                 ...state,
