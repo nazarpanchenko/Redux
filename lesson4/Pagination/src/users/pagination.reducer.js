@@ -66,31 +66,35 @@ const initialState = {
 };
 
 export const paginationReducer = (state = initialState, action) => {
-    let startPos = 0, 
-        endPos = 0;
+    let currentPos = 0,
+        shift = 0,
+        nextPos = 0,
+        prevPos = 0;
 
     switch(action.type) {
         case NEXT:
-            startPos += action.payload.itemsPerPage;
-            endPos += action.payload.itemsPerPage;
+            currentPos += action.payload.itemsPerPage;
+            nextPos = currentPos + action.payload.itemsPerPage;
+            shift = action.payload.itemsPerPage;
 
             return {
                 ...state,
                 users: {
-                    usersList: users.slice(startPos, endPos),
+                    usersList: users.slice().splice(nextPos, shift),
                     currentPage: state.users.currentPage + 1,
                 }
             };
 
         case PREV:
-            startPos -= action.payload.itemsPerPage;
-            endPos -= action.payload.itemsPerPage;
+            currentPos -= action.payload.itemsPerPage;
+            prevPos = nextPos - action.payload.itemsPerPage;
+            shift = action.payload.itemsPerPage;
 
             return {
                 ...state,
                 users: {
-                    usersList: users.slice(startPos, endPos),
-                    currentPage: state.usedsrs.currentPage - 1
+                    usersList: users.slice().splice(prevPos, shift),
+                    currentPage: state.users.currentPage - 1
                 }
             };
 
