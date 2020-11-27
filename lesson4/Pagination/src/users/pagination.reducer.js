@@ -60,40 +60,27 @@ export const users = [
 
 const initialState = {
     users: {
-        usersList: users.slice(0, 3),
+        usersList: users,
         currentPage: 0
     }
 };
 
-let currentPos = 0,
-    prevPos = 0,
-    nextPos = 0,
-    shift = 0;
-
 export const paginationReducer = (state = initialState, action) => {
     switch(action.type) {
         case NEXT:
-            currentPos = nextPos;
-            nextPos = currentPos + action.payload.itemsPerPage;
-            shift = action.payload.itemsPerPage;
-
             return {
                 ...state,
                 users: {
-                    usersList: users.slice().splice(nextPos, shift),
+                    usersList: action.payload.userData,
                     currentPage: state.users.currentPage + 1,
                 }
             };
 
         case PREV:
-            prevPos = nextPos - action.payload.itemsPerPage;
-            shift = action.payload.itemsPerPage;
-            nextPos -= action.payload.itemsPerPage;
-
             return {
                 ...state,
                 users: {
-                    usersList: users.slice().splice(prevPos, shift),
+                    usersList: action.payload.userData,
                     currentPage: state.users.currentPage - 1
                 }
             };

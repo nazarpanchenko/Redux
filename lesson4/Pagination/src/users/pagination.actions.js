@@ -1,20 +1,20 @@
 export const NEXT = 'PAGINATION/NEXT';
 export const PREV = 'PAGINATION/PREV';
 
-export const goNext = itemsPerPage => {
+export const goNext = userData => {
     return {
         type: NEXT,
         payload: {
-            itemsPerPage
+            userData
         }
     };
 };
 
-export const goPrev = itemsPerPage => {
+export const goPrev = userData => {
     return {
         type: PREV,
         payload: {
-            itemsPerPage
+            userData
         }
     };
 };
