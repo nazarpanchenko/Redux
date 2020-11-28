@@ -3,48 +3,40 @@ import Pagination from './Pagination';
 import User from './User';
 import { connect } from 'react-redux';
 import * as paginationAction from './pagination.actions';
-import * as List from './pagination.reducer';
+import * as userData from './pagination.reducer';
 
 class UsersList extends Component {
-    state = {
-        currentPos: 3,
-        itemsPerPage: 3
-    };
-
     onGoNext = () => {
-        const { currentPos, itemsPerPage } = this.state;
-        const nextItems = List.users.slice(currentPos, currentPos + itemsPerPage);
+        const { users, itemsPerPage } = userData;
+        const { currentPage } = this.props;
 
-        this.props.goNext(nextItems);
-        this.setState({
-            currentPos: currentPos + itemsPerPage
-        });
+        this.props.goNext(users.slice(
+            currentPage + itemsPerPage, (currentPage + itemsPerPage) + itemsPerPage
+        ));
     }
 
     onGoPrev = () => {
-        const { currentPos, itemsPerPage } = this.state;
-        const prevItems = List.users.slice(currentPos - (itemsPerPage * 2), currentPos - itemsPerPage);
+        const { users, itemsPerPage } = userData;
+        const { currentPage } = this.props;
 
-        this.props.goPrev(prevItems);
-        this.setState({
-            currentPos: currentPos - itemsPerPage
-        });
+        this.props.goPrev(users.slice(
+            currentPage - itemsPerPage, currentPage
+        ));
     }
 
     render() {
-        const { itemsPerPage } = this.state;
-        const { users, goPrev, goNext, currentPage } = this.props;
+        const { users, currentPage } = this.props;
 
         const initialItems = users.slice(0, 3);
 
         return (
             <div>
                 <Pagination
-                    goPrev={this.onGoPrev}
                     goNext={this.onGoNext}
+                    goPrev={this.onGoPrev}
                     currentPage={currentPage}
-                    totalItems={List.users.length}
-                    itemsPerPage={itemsPerPage}
+                    totalItems={userData.users.length}
+                    itemsPerPage={userData.itemsPerPage}
                 />
                 {currentPage === 0
                     ? initialItems.map(user => (

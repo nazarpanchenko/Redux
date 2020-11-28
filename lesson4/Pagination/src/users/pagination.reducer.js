@@ -1,5 +1,7 @@
 import { NEXT, PREV } from './pagination.actions';
 
+export const itemsPerPage = 3;
+
 export const users = [
     {
         id: 'id-0',
