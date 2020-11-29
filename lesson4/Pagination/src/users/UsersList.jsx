@@ -10,18 +10,24 @@ class UsersList extends Component {
         const { users, itemsPerPage } = userData;
         const { currentPage } = this.props;
 
-        this.props.goNext(users.slice(
-            currentPage + itemsPerPage, (currentPage + itemsPerPage) + itemsPerPage
-        ));
+        let nextPos;
+
+        if (currentPage === 0) {
+            nextPos = currentPage + itemsPerPage;
+        } else {
+            nextPos = currentPage * itemsPerPage + itemsPerPage;
+        }
+
+        this.props.goNext(users.slice().splice(nextPos, itemsPerPage));
     }
 
     onGoPrev = () => {
         const { users, itemsPerPage } = userData;
         const { currentPage } = this.props;
 
-        this.props.goPrev(users.slice(
-            currentPage - itemsPerPage, currentPage
-        ));
+        let prevPos = currentPage * itemsPerPage - itemsPerPage;
+
+        this.props.goPrev(users.slice().splice(prevPos, itemsPerPage));
     }
 
     render() {
