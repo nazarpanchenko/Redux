@@ -6,7 +6,7 @@ import Weather from './weather/Weather';
 const App = () => {
     return (
         <Provider store={store}>
-            <Weather />
+           <Weather />
         </Provider>
     );
 };
