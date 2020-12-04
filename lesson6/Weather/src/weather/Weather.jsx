@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { weatherDataSelector } from './weather.selectors';
-import getWeatherData from './weather.actions';
+import { getWeatherData } from './weather.actions';
 
 class Weather extends Component {
     componentDidMount() {

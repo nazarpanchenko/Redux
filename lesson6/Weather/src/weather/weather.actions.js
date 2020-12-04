@@ -1,4 +1,4 @@
-const baseUrl = 'https://5e5cf5eb97d2ea0014796f01.mockapi.io/api/v1/cities';
+import { getCitiesList } from './weather.gateway';
 
 export const WEATHER_DATA = 'WEATHER_DATA';
 
@@ -11,18 +11,11 @@ const citiesListReceived = citiesList => {
     }
 }
 
-const getWeatherData = () => {
+export const getWeatherData = () => {
     return function(dispatch) {
-        return fetch(baseUrl).then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error();
-        })
+        getCitiesList()
         .then(citiesList => {
             dispatch(citiesListReceived(citiesList));
         });
     }
 };
-
-export default getWeatherData;
