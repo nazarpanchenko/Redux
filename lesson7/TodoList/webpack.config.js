@@ -1,11 +1,11 @@
-const HtmlWebpackPlugin = require('./node_modules/html-webpack-plugin')
-const MiniCssExtractPlugin = require('./node_modules/mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('./node_modules/clean-webpack-plugin')
-const webpack = require('./node_modules/webpack')
-const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = (env, argv) => {
-    const isProduction = argv.mode === 'production'
+    const isProduction = argv.mode === 'production';
     const config = {
         entry: './src/index.js',
         output: {
@@ -48,15 +48,15 @@ module.exports = (env, argv) => {
         output: {
             path: path.resolve(__dirname, 'build'),
         },
-    }
+    };
 
     if (isProduction) {
         config.plugins.push(
             new MiniCssExtractPlugin({
                 filename: '[name].css',
             })
-        )
+        );
     }
 
-    return config
-}
+    return config;
+};

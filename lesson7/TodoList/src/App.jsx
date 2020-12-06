@@ -1,8 +1,14 @@
-import React from 'react'
-import TodoList from './TodoList'
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
+import TodoList from './tasks/components/TodoList';
 
 const App = () => {
-    return (<h1 className="title">Todo List</h1>), (<TodoList />)
-}
+    return (
+        <Provider store={store}>
+            <TodoList />
+        </Provider>
+    );
+};
 
-export default App
+export default App;

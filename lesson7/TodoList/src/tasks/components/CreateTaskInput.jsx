@@ -1,20 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CreateTaskInput extends Component {
     state = {
-        value: '',
-    }
+        value: ''
+    };
 
-    handleChange = (event) => {
+    handleChange = event => {
         this.setState({
-            value: event.target.value,
-        })
-    }
+            value: event.target.value
+        });
+    };
 
     handleTaskCreate = () => {
-        this.props.onCreate(this.state.value)
-        this.setState({ value: '' })
-    }
+        this.props.handleTaskCreate(this.state.value);
+        this.setState({ value: '' });
+    };
 
     render() {
         return (
@@ -32,8 +33,12 @@ class CreateTaskInput extends Component {
                     Create
                 </button>
             </div>
-        )
+        );
     }
 }
 
-export default CreateTaskInput
+CreateTaskInput.propTypes = {
+    handleTaskCreate: PropTypes.func.isRequired
+};
+
+export default CreateTaskInput;

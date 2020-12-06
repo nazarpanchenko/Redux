@@ -1,6 +1,6 @@
-import React from 'react'
-import CreateTaskInput from './CreateTaskInput'
-import classNames from 'classnames'
+import React from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 const Task = ({ id, done, text, onChange, onDelete }) => {
     return (
@@ -17,7 +17,21 @@ const Task = ({ id, done, text, onChange, onDelete }) => {
                 onClick={() => onDelete(id)}
             ></button>
         </li>
-    )
-}
+    );
+};
 
-export default Task
+Task.propTypes = {
+    tasks: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            text: PropTypes.string,
+            done: PropTypes.bool
+        })
+    )
+};
+
+Task.defaultProps = {
+    done: false
+};
+
+export default Task;
